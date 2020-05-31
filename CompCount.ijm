@@ -32,11 +32,13 @@ function processRedFolder(inputRed, image) {
 	list = Array.sort(list);
 	for (i = 0; i < list.length; i++) {
 		if(File.isDirectory(inputRed + File.separator + list[i]))
-			processFolder(inputRed + File.separator + list[i]);
+			processRedFolder(inputRed + File.separator + list[i], image);
 		if(endsWith(list[i], image))
 			processRedFile(inputRed, output, list[i]);
 	}
 }
+
+//processRedFolder("E:" + File.separator + "Microscopy" + File.separator + "sam images" + File.separator + "sam images" + File.separator + "10Fpc3 vs pc3red" + File.separator + "RFP", "A2_10_2019y12m27d_13h00m.tif")
 
 function processRedFile(inputRed, output, file) {
 	print(file);
@@ -61,13 +63,14 @@ function processRedFile(inputRed, output, file) {
 
 	rename("RFP" + image);
 	run("Analyze Particles...", "size=50-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
+	saveAs("PNG",  output + File.separator + file + "_RFPparts.png");
 }
 
 function processFile(input, output, file) {
 	// Do the processing here by adding your own code.
 	// Leave the print statements until things work, then remove them.
 	
-	print(file);
+	print(input + File.separator + file);
 	image = substring(file, indexOf(file, "_"), lengthOf(file));
 	open(input + File.separator + file);
 	
@@ -85,19 +88,32 @@ function processFile(input, output, file) {
 	
 	run("Bandpass Filter...", "filter_large=1000 filter_small=5 suppress=None tolerance=5 autoscale saturate");
 
-	run("H_Watershed", "impin=[123119-directional] hmin=69.0 thresh=119.0 peakflooding=100.0 outputmask=true allowsplitting=true");
+	impin = getTitle();
+	
+	run("H_Watershed", "impin=[" + impin + "] hmin=69.0 thresh=119.0 peakflooding=100.0 outputmask=true allowsplitting=true");
 
     close();
 	rename("PC" + image);
-	run("Analyze Particles...", "size=50-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
 	
+	run("Analyze Particles...", "size=50-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
+	saveAs("PNG",  output + File.separator + file + "_PCparts.png");
+
 	processRedFolder(inputRed, image);
 
 	print("Processing: " + input + File.separator + file);
 	print("Saving to: " + output);
+	closeAllWindows();
 }
 
-	
+
+ function closeAllWindows () { 
+      while (nImages>0) {
+          selectImage(nImages);
+          close(); 
+      } 
+  } 
+}
+
 function saveTable () {
 	if (! isOpen("Summary")) {exit ("Summary Table")}
 	selectWindow("Summary");
