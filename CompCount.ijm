@@ -49,7 +49,7 @@ function processRedFile(inputRed, output, file) {
 	
 	run("Bandpass Filter...", "filter_large=1000 filter_small=5 suppress=None tolerance=5 autoscale saturate");
 	
-	run("Auto Threshold", "method=Default white");
+	run("Auto Threshold", "method=Default white show");
 	
 	roiManager("deselect")
 	
@@ -62,7 +62,7 @@ function processRedFile(inputRed, output, file) {
 	run("Select None");
 
 	rename("RFP" + image);
-	run("Analyze Particles...", "size=50-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
+	run("Analyze Particles...", "size=25-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
 	saveAs("PNG",  output + File.separator + file + "_RFPparts.png");
 }
 
@@ -76,26 +76,32 @@ function processFile(input, output, file) {
 	
 	run("8-bit");
 
-	run("Directional Filtering", "type=Max operation=Opening line=10 direction=32");
+	//run("Directional Filtering", "type=Max operation=Opening line=10 direction=32");
 	
-	setOption("ScaleConversions", true);
+	//setOption("ScaleConversions", true);
 	
-	setThreshold(0, 104);
+	//setThreshold(0, 104);
 	
-	setOption("BlackBackground", true);
+	//setOption("BlackBackground", true);
+
+	run("Bandpass Filter...", "filter_large=1000 filter_small=5 suppress=None tolerance=5 autoscale saturate");
+	
+	run("Auto Threshold", "method=Default white show");
 	
 	run("Convert to Mask");
-	
-	run("Bandpass Filter...", "filter_large=1000 filter_small=5 suppress=None tolerance=5 autoscale saturate");
 
-	impin = getTitle();
+	run("Watershed Irregular Features", "erosion=3 convexity_threshold=0 separator_size=0-5");
 	
-	run("H_Watershed", "impin=[" + impin + "] hmin=69.0 thresh=119.0 peakflooding=100.0 outputmask=true allowsplitting=true");
+	//run("Bandpass Filter...", "filter_large=1000 filter_small=5 suppress=None tolerance=5 autoscale saturate");
 
-    close();
+	//impin = getTitle();
+	
+	//run("H_Watershed", "impin=[" + impin + "] hmin=69.0 thresh=119.0 peakflooding=100.0 outputmask=true allowsplitting=true");
+
+    //close();
 	rename("PC" + image);
 	
-	run("Analyze Particles...", "size=50-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
+	run("Analyze Particles...", "size=25-1500 pixel circularity=0.25-1.00 show=Overlay exclude clear include summarize add");
 	saveAs("PNG",  output + File.separator + file + "_PCparts.png");
 
 	processRedFolder(inputRed, image);
@@ -105,14 +111,12 @@ function processFile(input, output, file) {
 	closeAllWindows();
 }
 
-
  function closeAllWindows () { 
       while (nImages>0) {
           selectImage(nImages);
           close(); 
       } 
   } 
-}
 
 function saveTable () {
 	if (! isOpen("Summary")) {exit ("Summary Table")}
