@@ -1,2 +1,2 @@
 # CompCount
-A toolset to count total and RFP-labeled cells from Incucyte Zoom images
+A tool to count total and RFP-labeled cells from Incucyte Zoom images
