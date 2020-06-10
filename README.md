@@ -2,9 +2,9 @@
 A tool to count total and RFP-labeled cells from Incucyte Zoom images
 
 ## Requirements
- -Fiji - https://fiji.sc/
- -BioVoxxel Toolbox - https://imagej.net/BioVoxxel_Toolbox
- -IncuCyte ZOOM exported phase contrast (PC) and fluoro channel images
+ 	-Fiji - https://fiji.sc/
+ 	-BioVoxxel Toolbox - https://imagej.net/BioVoxxel_Toolbox
+ 	-IncuCyte ZOOM exported phase contrast (PC) and fluoro channel images
 
 ## Usage
 The script operates on input folders containing PC and the corresponding RFP
