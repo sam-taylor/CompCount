@@ -19,11 +19,11 @@ the area defined by the corresponding PC mask is ignored.
 
 Phase contrast and fluoro channel TIFF images must have the following naming 
  convention: "XXXX_A1_1_2019y12m27d_13h00m.tif" 
-		where:
- 		XXXX - file name text that does not contain "_"
-		_A1 - well number from multi-well plate
-   	_1 - image number within the well
-  	_2019y12m27d_13h00m - timestamp
+	where:
+ 		-XXXX - file name text that does not contain "_"
+		-_A1 - well number from multi-well plate
+   		-_1 - image number within the well
+  		-_2019y12m27d_13h00m - timestamp
 
 The code is optimized for the IncucyteZOOM machine using the PC3 cell line.
 Individual applications may require optimization of the various parameters.
