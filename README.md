@@ -22,11 +22,6 @@ the area defined by the corresponding PC mask is ignored.
 Phase contrast and fluoro channel TIFF images must have the following naming 
  convention: "XXXX_A1_1_2019y12m27d_13h00m.tif" 
 	where:
- 	-XXXX - file name text that does not contain "_"
- 	-_A1 - well number from multi-well plate
-	-_2019y12m27d_13h00m - timestamp
- 	-_1 - image number within the well
-
 <ul>
   <li>XXXX - file name text that does not contain "_"</li>
   <li>_A1 - well number from multi-well plate</li>
