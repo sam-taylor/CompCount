@@ -32,6 +32,10 @@ Phase contrast and fluoro channel TIFF images must have the following naming
 The code is optimized for the IncucyteZOOM machine using the PC3 cell line.
 Individual applications may require optimization of the various parameters.
 
+The cell counts as well as other summary statistics are exported to summary.txt
+in the specified output folder. This can be imported into MATLAB to aggregate
+the cell counts by well and timepoint.
+
 ## Description
 This tool takes raw phase contrast (PC) and RFP images taken by the 
 IncuCyte ZOOM system and applies a series of operations in ImageJ to identify 
