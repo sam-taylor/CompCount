@@ -2,9 +2,11 @@
 A tool to count total and RFP-labeled cells from Incucyte Zoom images
 
 ## Requirements
- 	-Fiji - https://fiji.sc/
- 	-BioVoxxel Toolbox - https://imagej.net/BioVoxxel_Toolbox
- 	-IncuCyte ZOOM exported phase contrast (PC) and fluoro channel images
+<ul>
+  <li>Fiji - https://fiji.sc/</li>
+  <li>BioVoxxel Toolbox - https://imagej.net/BioVoxxel_Toolbox</li>
+  <li>IncuCyte ZOOM exported phase contrast (PC) and fluoro channel images</li>
+</ul>
 
 ## Usage
 The script operates on input folders containing PC and the corresponding RFP
@@ -24,7 +26,14 @@ Phase contrast and fluoro channel TIFF images must have the following naming
  	-_A1 - well number from multi-well plate
 	-_2019y12m27d_13h00m - timestamp
  	-_1 - image number within the well
-	
+
+<ul>
+  <li>XXXX - file name text that does not contain "_"</li>
+  <li>_A1 - well number from multi-well plate</li>
+  <li>_2019y12m27d_13h00m - timestamp</li>
+<li>_1 - image number within the well</li>
+</ul>
+
 The code is optimized for the IncucyteZOOM machine using the PC3 cell line.
 Individual applications may require optimization of the various parameters.
 
