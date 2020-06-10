@@ -18,8 +18,6 @@ splits = vertcat( splits{:} );
 T = cell2table(splits,'VariableNames',{'Channel' 'Well' 'Frame' 'Date' 'Time'})
 T = [PCCount T];
 
-%T2 = mergevars(T, {'Date','Time'},'NewVariableName','Date_Time');
-
 %consolidate the timestamp into a single variable
 T.DateTime = strcat(T.Date, T.Time);
 
@@ -30,7 +28,8 @@ statarray = grpstats(T,{'Channel','Well', 'DateTime'},{'sum'},...
 %this stat array calculates the average cell size in each well--useful for
 %quality control
 statarray2 = grpstats(T,{'Channel','Well', 'DateTime'},{'mean'},...
-                     'DataVars','AverageSize',);                 
+                     'DataVars','AverageSize',);   
+                     
 %change your output filename to whatever you want. File will be written to
 %the directory in which this script resides.
 writetable(statarray2,'2020_05_16_TestOutput.csv');
