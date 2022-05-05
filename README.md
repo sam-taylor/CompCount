@@ -20,8 +20,9 @@ Phase contrast and fluoro channel TIFF images must have the following naming
 <ul>
   <li>XXXX - file name text that does not contain "_"</li>
   <li>_A1 - well number from multi-well plate</li>
+  <li>_1 - image number within the well</li>
   <li>_2019y12m27d_13h00m - timestamp</li>
-<li>_1 - image number within the well</li>
+
 </ul>
 
 The code is optimized for the IncucyteZOOM machine using the PC3 cell line.
