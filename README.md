@@ -14,11 +14,6 @@ images respectively. The script relies on consistent naming of the files in orde
 to match the PC image with its respective RFP image. RFP signal not contained in 
 the area defined by the corresponding PC mask is ignored.
 
-The script operates on input folders containing PC and the corresponding RFP
-images respectively. The script relies on consistent naming of the files in order
-to match the PC image with its respective RFP image. RFP signal not contained in 
-the area defined by the corresponding PC mask is ignored.
-
 Phase contrast and fluoro channel TIFF images must have the following naming 
  convention: "XXXX_A1_1_2019y12m27d_13h00m.tif" 
 	where:
